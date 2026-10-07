@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Planner | John-Victory Sukore</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+<a class="brand" href="index.html">J-V Sukore</a>
+<button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false">Menu</button>
+<nav><ul id="navList"><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="projects.html">Projects</a></li><li><a href="planner.html" class="active" aria-current="page">Planner</a></li><li><a href="contact.html">Contact</a></li></ul></nav>
+</header>
+<main>
+<section class="panel">
+<h1>Academic planner</h1>
+<form id="taskForm" class="inline-form">
+<label for="taskInput">New task</label>
+<input type="text" id="taskInput" placeholder="e.g. Finish COS 106 term project" autocomplete="off">
+<button class="btn" type="submit">Add task</button>
+</form>
+<p id="taskMsg" class="msg" role="alert"></p>
+<p id="taskCount" class="count"></p>
+<ul id="taskList" class="tasks"></ul>
+</section>
+</main>
+<footer class="site-footer"><p>&copy; 2026 John-Victory Osamudiamen Sukore. Cybersecurity, Miva Open University.</p></footer>
+<script src="script.js"></script>
+</body>
+</html>
