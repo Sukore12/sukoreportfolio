@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hacker Terminal | John-Victory Sukore</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.terminal{background:#0b0f0b;border:1px solid var(--mid);border-radius:10px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.5)}
+.term-bar{display:flex;align-items:center;gap:.4rem;padding:.5rem .8rem;background:#1c1c1c;border-bottom:1px solid var(--mid)}
+.dot{width:12px;height:12px;border-radius:50%;background:var(--mid)}
+.term-title{margin-left:.6rem;font-size:.85rem;color:#bbb}
+.term-body{padding:1rem 1.2rem;min-height:230px;font-family:"Courier New",Consolas,monospace;font-size:1rem;color:#5dff8a;white-space:pre-wrap;word-break:break-word}
+.cursor{display:inline-block;width:.6em;height:1.1em;background:#5dff8a;vertical-align:text-bottom;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.clock{text-align:center;margin:1.5rem 0 .5rem}
+.time{font-family:"Courier New",Consolas,monospace;font-size:clamp(2.2rem,9vw,3.6rem);color:#5dff8a;letter-spacing:.08em;text-shadow:0 0 12px rgba(93,255,138,.45)}
+.date{color:#bbb}
+.actions{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1rem}
+</style>
+</head>
+<body>
+<header class="site-header">
+<a class="brand" href="index.html">Sukore</a>
+<button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false">Menu</button>
+<nav><ul id="navList"><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="projects.html" class="active" aria-current="page">Projects</a></li><li><a href="planner.html">Planner</a></li><li><a href="contact.html">Contact</a></li></ul></nav>
+</header>
+<main>
+<section class="panel">
+<h1>Hacker Terminal</h1>
+<p>A terminal-style typing effect with a live clock, built with JavaScript.</p>
+<div class="terminal">
+<div class="term-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="term-title">sukore@portfolio: ~</span></div>
+<div class="term-body" id="screen" aria-live="polite"></div>
+</div>
+<div class="clock">
+<div class="time" id="time">00:00:00</div>
+<div class="date" id="date"></div>
+</div>
+<div class="actions">
+<button type="button" class="btn" id="replay">Replay typing</button>
+<a class="btn btn-ghost" href="projects.html">Back to projects</a>
+</div>
+</section>
+</main>
+<footer class="site-footer"><p>&copy; 2026 John-Victory Osamudiamen Sukore. Cybersecurity, Miva Open University.</p></footer>
+<script src="script.js"></script>
+<script>
+var lines = [
+  "> Booting portfolio system...",
+  "> Access granted.",
+  "> User: John-Victory Sukore",
+  "> Role: Cybersecurity student, Miva Open University",
+  "> Skills: HTML, CSS, JavaScript, Python, Networking",
+  "> Mission: find weaknesses before attackers do",
+  "> Status: learning every day"
+];
+var screenEl = document.getElementById("screen");
+var run = 0;
+var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+function typeLines() {
+  run++;
+  var myRun = run;
+  var text = "";
+  var cursor = '<span class="cursor"></span>';
+  screenEl.textContent = "";
+  if (reduce) {
+    screenEl.textContent = lines.join("\n");
+    return;
+  }
+  var lineIndex = 0, charIndex = 0;
+  function step() {
+    if (myRun !== run) { return; }
+    if (lineIndex >= lines.length) {
+      screenEl.innerHTML = text.replace(/</g, "&lt;") + cursor;
+      return;
+    }
+    var line = lines[lineIndex];
+    if (charIndex < line.length) {
+      text += line.charAt(charIndex);
+      charIndex++;
+      screenEl.innerHTML = text.replace(/</g, "&lt;") + cursor;
+      setTimeout(step, 35);
+    } else {
+      text += "\n";
+      lineIndex++;
+      charIndex = 0;
+      setTimeout(step, 350);
+    }
+  }
+  step();
+}
+
+function pad(n) { return n < 10 ? "0" + n : "" + n; }
+function updateClock() {
+  var now = new Date();
+  document.getElementById("time").textContent = pad(now.getHours()) + ":" + pad(now.getMinutes()) + ":" + pad(now.getSeconds());
+  document.getElementById("date").textContent = now.toDateString();
+}
+
+document.getElementById("replay").addEventListener("click", typeLines);
+updateClock();
+setInterval(updateClock, 1000);
+typeLines();
+</script>
+</body>
+</html>

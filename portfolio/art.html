@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Art Gallery | John-Victory Sukore</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.2rem}
+.gallery figure{margin:0;background:var(--card);border:1px solid var(--mid);border-radius:10px;overflow:hidden;transition:transform .25s,box-shadow .25s}
+.gallery figure:hover{transform:translateY(-4px);box-shadow:0 8px 20px rgba(0,0,0,.5)}
+.gallery img{display:block;width:100%;height:320px;object-fit:cover}
+.gallery figcaption{padding:.7rem .9rem;font-size:.95rem}
+</style>
+</head>
+<body>
+<header class="site-header">
+<a class="brand" href="index.html">Sukore</a>
+<button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false">Menu</button>
+<nav><ul id="navList"><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="projects.html" class="active" aria-current="page">Projects</a></li><li><a href="planner.html">Planner</a></li><li><a href="contact.html">Contact</a></li></ul></nav>
+</header>
+<main>
+<section class="panel">
+<h1>Art Gallery</h1>
+<p>A collection of my drawings, paintings and illustrations. Tap any picture to see it bigger.</p>
+</section>
+<section class="gallery">
+<figure><a href="art1.jpg"><img src="art1.jpg" alt="Ink and colour sketch of two people in front of the UK and Nigerian flags" loading="lazy"></a><figcaption>Ink and colour sketch</figcaption></figure>
+<figure><a href="art2.jpg"><img src="art2.jpg" alt="Painting of a woman holding a red flower beside a pink silhouette" loading="lazy"></a><figcaption>Painting</figcaption></figure>
+<figure><a href="art3.jpg"><img src="art3.jpg" alt="Digital illustration of three people pushing a big blue cube with the letter P" loading="lazy"></a><figcaption>Digital illustration</figcaption></figure>
+<figure><a href="art4.jpg"><img src="art4.jpg" alt="Pencil portrait sketch of a girl in a notebook" loading="lazy"></a><figcaption>Pencil portrait</figcaption></figure>
+<figure><a href="art5.jpg"><img src="art5.jpg" alt="Pen sketches of scribbled figures with the words LOST and SHUT UP" loading="lazy"></a><figcaption>Pen sketches</figcaption></figure>
+<figure><a href="art6.jpg"><img src="art6.jpg" alt="Ink drawing of a face with large eyes" loading="lazy"></a><figcaption>Ink portrait</figcaption></figure>
+</section>
+<p><a class="btn btn-ghost" href="projects.html">Back to projects</a></p>
+</main>
+<footer class="site-footer"><p>&copy; 2026 John-Victory Osamudiamen Sukore. Cybersecurity, Miva Open University.</p></footer>
+<script src="script.js"></script>
+</body>
+</html>
