@@ -1,7 +1,10 @@
 :root{--bg:#292929;--mid:#616161;--white:#ffffff;--text:#f2f2f2;--card:rgba(41,41,41,.82);--bar:rgba(22,22,22,.92);--ok:#7fe0a8;--bad:#ff8a80}
 *{box-sizing:border-box}
 body{margin:0;font-family:"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--text);background:var(--bg)}
-body::before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(rgba(41,41,41,.45),rgba(41,41,41,.45)),url("bg.jpg") center/cover no-repeat}
+body::before{content:"";position:fixed;inset:-8%;z-index:-2;background:linear-gradient(rgba(41,41,41,.45),rgba(41,41,41,.45)),url("bg.jpg") center/cover no-repeat;animation:drift 30s ease-in-out infinite alternate;will-change:transform}
+body::after{content:"";position:fixed;inset:-30%;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at center,rgba(255,255,255,.10),rgba(255,255,255,0) 45%);animation:sheen 22s ease-in-out infinite alternate;will-change:transform}
+@keyframes drift{from{transform:translate3d(-2%,-1%,0) scale(1.04)}to{transform:translate3d(2%,1.5%,0) scale(1.14)}}
+@keyframes sheen{from{transform:translate3d(-25%,-10%,0)}to{transform:translate3d(25%,12%,0)}}
 h1,h2,h3{font-family:Georgia,"Times New Roman",serif;color:var(--white);line-height:1.2}
 a{color:var(--white)}
 :focus-visible{outline:3px solid var(--white);outline-offset:2px}
@@ -51,4 +54,4 @@ input,textarea{width:100%;padding:.6rem;background:#1c1c1c;color:var(--white);bo
 .del{background:var(--bad);color:#1c1c1c;border:0;border-radius:6px;padding:.3rem .7rem;font-weight:600;cursor:pointer}
 .site-footer{text-align:center;padding:1.5rem;background:var(--bar);border-top:1px solid var(--mid);color:var(--white);margin-top:2rem}
 @media(max-width:700px){.menu-btn{display:block}nav{width:100%}nav ul{display:none;flex-direction:column;padding-top:.6rem}nav ul.open{display:flex}.panel{padding:1.2rem}}
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media(prefers-reduced-motion:reduce){*,body::before,body::after{animation:none!important;transition:none!important}}
